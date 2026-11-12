@@ -43,6 +43,5 @@ Keep the IDs and markers exactly as shown; `check-plan.sh` reads them. Delete a 
 - **Decisions**: each decision and each assumption you did not ask about, once, with its reason.
 - **Tasks**: each fits one session. `Done when` is the cheapest check that would fail if the task were wrong. Mark a task only a person can do with 👤, and never invent its result.
 - The first task writes into the agent instruction file where the plan is, and that a session continuing the build uses groove to do the first unchecked task.
-- Check the box when a task's `Done when` passes.
 
 Before stopping, run `bash check-plan.sh docs/groove/PLAN.md` from this skill's folder and fix what it reports.

@@ -1,0 +1,15 @@
+{
+  "name": "groove",
+  "owner": {
+    "name": "phykn"
+  },
+  "description": "Marketplace for Groove: coding work with only what the task needs.",
+  "plugins": [
+    {
+      "name": "groove",
+      "source": "./",
+      "description": "Coding work end to end with only what the task needs: plan when it is big, write, cut, and prove it with the cheapest check.",
+      "category": "productivity"
+    }
+  ]
+}

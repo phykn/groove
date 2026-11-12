@@ -1,0 +1,5 @@
+[
+  {"should": true, "query": "total이 9:00으로 나오는데 실제로는 33시간쯤이야. 고쳐줘"},
+  {"should": true, "query": "Plan a CLI that summarizes the CSV files in a folder, then build it"},
+  {"should": false, "query": "이 함수가 뭘 하는지 설명해줘: entries.py의 read_entries"}
+]

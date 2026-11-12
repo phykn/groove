@@ -1,0 +1,21 @@
+{
+  "name": "groove",
+  "interface": {
+    "displayName": "Groove"
+  },
+  "plugins": [
+    {
+      "name": "groove",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/phykn/groove.git",
+        "ref": "main"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

@@ -37,10 +37,10 @@ Read `code.md` before writing or cutting code.
 
 ## Report
 
-In a few lines:
+In a few lines, in the language of the user's request, even when the project is in another language:
 
 - Whether it is done: done only when the check passed.
-- The evidence, and these numbers counted by command: lines added and removed, new functions and files, tests and their time.
+- The evidence, and these numbers counted by command after the last edit, such as `git diff --numstat` and `wc -l` for new files: lines added and removed, new functions and files, tests and their time.
 - Assumptions, and what you could not verify. Do not ask the user to check it, and do not ask again about anything already decided.
 - What you saw outside the scope, one line each, including what looks unneeded and should be deleted.
 

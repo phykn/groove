@@ -7,7 +7,8 @@ awk '
 /^```/ { code = !code; next }
 code { next }
 
-/<[^<>]+>/ { print "line " NR ": unfilled placeholder"; bad = 1 }
+{ prose = $0; gsub(/`[^`]*`/, "", prose) }
+prose ~ /<[^<>]+>/ { print "line " NR ": unfilled placeholder"; bad = 1 }
 
 /^- R[0-9]+:/ {
     id = substr($2, 1, length($2) - 1)

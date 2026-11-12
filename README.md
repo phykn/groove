@@ -3,7 +3,7 @@
 <p align="center">A coding skill for Claude Code and Codex that writes only what the task needs.</p>
 
 <p align="center">
-  <img src="https://img.shields.io/github/v/tag/phykn/groove?label=version" alt="version">
+  <img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fphykn%2Fgroove%2Fmain%2F.claude-plugin%2Fplugin.json&query=%24.version&label=version&prefix=v" alt="version">
   <img src="https://img.shields.io/badge/Claude%20Code-plugin-orange" alt="Claude Code plugin">
   <img src="https://img.shields.io/badge/Codex-plugin-black" alt="Codex plugin">
 </p>
@@ -16,9 +16,18 @@
 
 ## Install
 
+Claude Code:
+
 ```text
 /plugin marketplace add phykn/groove
 /plugin install groove@groove
+```
+
+Codex:
+
+```text
+codex plugin marketplace add phykn/groove
+codex plugin add groove@groove
 ```
 
 ## Use

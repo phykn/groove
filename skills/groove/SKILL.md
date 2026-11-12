@@ -20,42 +20,40 @@ description: >
 ## Route
 
 1. Read each file once, and again only after it changes.
-2. Ask only when no file can tell you and a wrong guess is costly to undo: the user's intent, a fact outside the project, or an action that cannot be undone. Ask everything in one message before writing, list the options briefly, and recommend one only when asked. Otherwise decide, and report the assumption.
-3. If you cannot do the work and check it in one go in this session, or it is a rebuild, or the user asked for a plan: read `plan.md`, write the plan, and stop. When the user says to build, do every task through Work without stopping again. Otherwise go straight to Work.
-
-Tasks marked † change no file.
+2. Decide for yourself and report the assumption. Ask only when no file can tell you and a wrong guess is costly to undo: the user's intent, a fact outside the project, or an action that cannot be undone. Then ask everything in one message before writing, with the options listed briefly and a recommendation only when asked.
+3. Plan first when you cannot do and check the work in one go in this session, when it is a rebuild, or when the user asks for a plan: read `plan.md`, write the plan, and stop. When the user says to build, do every task through Work without stopping again. Anything else goes straight to Work.
 
 ## Work
 
-Read `code.md` before writing or cutting code.
+Read `code.md` before writing or cutting code. A task marked † changes no file and skips steps 1 and 3 to 5.
 
-1. **Write.** Before each new function, option, or file, name what calls it; if you cannot, do not write it. Write nothing unasked except a regression test for a bug you fixed, a test for the requested behavior, and validation of input from outside the program. When behavior changes, delete the old behavior and the tests that only covered it. When a name or config key changes, update every caller, test, document, instruction file, and config file that names it.
-2. **Check what you changed** with the cheapest check that would fail if you were wrong. One command's output beats a test suite. If a check still fails after two fixes, stop and say where you are stuck.
-3. **Cut**, asked or not. Compare everything this task wrote or changed against `code.md` and delete what it rules out. In the plan, README, instruction file, and comments, delete each sentence that states what the reader would do anyway or repeats another place. Before deleting a check or handler, find out why it exists. Never pack lines or shorten names to save lines.
-4. **Run the whole suite once.** On failure, go back to step 1. If tests you wrote push it past a few seconds, trim them. If the project's suite was already slow, run only the tests for what you changed and say the full suite was not run. In a new project, or when a README command changed, run that command as written.
+1. **Write.** Name what calls each new function, option, or file before writing it; if nothing does, do not write it. Unasked, write only a regression test for a bug you fixed, a test for the requested behavior, and validation of input from outside the program. When behavior changes, delete the old behavior and the tests that only covered it. When a name or config key changes, update every caller, test, document, instruction file, and config file that names it.
+2. **Check** what you changed with the cheapest check that would fail if you were wrong. One command's output beats a test suite. After two failed fixes, stop and say where you are stuck.
+3. **Cut**, asked or not. From what this task wrote or changed, delete what `code.md` rules out. From the plan, README, instruction file, and comments, delete each sentence that says what the reader would do anyway or repeats another place. Find out why a check or handler exists before deleting it. Never pack lines or shorten names to save lines.
+4. **Run the whole suite once.** On failure, go back to step 1. If tests you wrote push it past a few seconds, trim them. If it was already slow, run only the tests for what you changed and say the full suite was not run. In a new project, or when a README command changed, run that command as written.
 5. Delete temporary files and checks that only compared before and after.
 
 ## Report
 
-In a few lines, in the language of the user's request, even when the project is in another language:
+A few lines, in the language of the user's request even when the project is in another:
 
-- Whether it is done: done only when the check passed.
-- The evidence, and these numbers counted by command after the last edit, such as `git diff --numstat` and `wc -l` for new files: lines added and removed, new functions and files, tests and their time.
-- Assumptions, and what you could not verify. Do not ask the user to check it, and do not ask again about anything already decided.
+- Done or not. It is done only when the check passed.
+- The evidence, and all four numbers, counted by command after the last edit, such as `git diff --numstat` and `wc -l` for new files: lines added and removed, new functions, new files, tests and their time.
+- Assumptions, and what you could not verify. Do not ask the user to check it, and do not ask again about anything decided.
 - What you saw outside the scope, one line each, including what looks unneeded and should be deleted.
 
 Do not start or propose the next step.
 
 ## Limits
 
-- Cutting and the time limit apply only to what this task wrote or changed, or to the scope the user gave for a refactor. Read outside the project only when the user points there.
-- Stop on your own only after writing or changing a plan, when a check fails twice, at a task only a person can do, or before an action that cannot be undone. Deleting a promise that files show something outside the project relies on counts: ask first.
+- Cutting and the time limit cover only what this task wrote or changed, or the scope the user gave for a refactor. Read outside the project only when the user points there.
+- Stop on your own only after writing or changing a plan, when a check fails twice, at a task only a person can do, or before an action that cannot be undone. Deleting a promise that files show something outside the project relies on is such an action: ask first.
 - Name the files you will delete before deleting them. Stay on the main branch unless the user asks for another.
 - Write no documents except the plan, the README, and the instruction file. Use subagents only when the user asks.
 
 ## Tasks
 
-Find the row by what is true when the work ends, whatever the user calls it: upgrading a dependency or porting is a refactor, CI or build config is a feature, a security check is a review. A task with no row follows Work alone.
+Pick the row by what is true when the work ends, whatever the user calls it: upgrading a dependency or porting is a refactor, CI or build config is a feature, a security check is a review. A task with no row follows Work alone.
 
 | Task | True when done | Keep |
 |---|---|---|
@@ -66,7 +64,7 @@ Find the row by what is true when the work ends, whatever the user calls it: upg
 | Rebuild | New code replaces old code used only as evidence | Carry over the idea. Bring an old feature or rule only if you can name what breaks without it. Read the old code from the commit the plan names |
 | Remove a feature | Existing behavior is gone | Delete its callers, tests, dependencies, and documentation too |
 | Fix a bug | Behavior matches the promise again | Find the cause first, and fix where it arises, not where the symptom shows. Leave one regression test that fails on the code before the fix |
-| Refactor | Kept behavior is the same and the shape differs | Follow Refactor in `code.md`. Cut across the whole scope. Do not change a character of text you move, such as help and messages. Leave what you changed on purpose, such as fixed bugs and deleted features, out of the comparison and report it separately |
+| Refactor | Kept behavior is the same and the shape differs | Follow Refactor in `code.md`. Cut across the whole scope. Do not change a character of text you move, such as help and messages. Report what you changed on purpose, such as fixed bugs and deleted features, apart from the comparison |
 | Improve | The promise is the same and a measurement is better | Measure and write down the baseline before the first edit. Measure again the same way and report both |
 | Experiment | One candidate is chosen | Fix the conditions and the rule for choosing before the first run. Run every candidate under the same conditions |
 | Long run | A fixed job runs to the end | Run one short trial, then run it in the background. If it stops, resume from the last saved state |
@@ -75,5 +73,5 @@ Find the row by what is true when the work ends, whatever the user calls it: upg
 
 - The promise is the behavior that documents, tests, and callers expect.
 - When code changes, update the README and instruction file in the same task. Create a missing one only for a new project or a planned build.
-- When the user asks to go through a refactor file by file, stop after each file: clean the whole file, then for each function say what it does in short steps, whether it is needed, and whether its name fits, and wait. After a folder, check it once more for comments, unused imports, long lines, and its tests.
 - Delete a feature whose benefit is unclear or negative only in a refactor or a rebuild. In other tasks, say so in the report.
+- When the user asks to go through a refactor file by file, stop after each file: clean the whole file, then for each function say what it does in short steps, whether it is needed, and whether its name fits, and wait. After a folder, check it once more for comments, unused imports, long lines, and its tests.

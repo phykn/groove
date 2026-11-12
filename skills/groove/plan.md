@@ -1,10 +1,10 @@
 # Plan
 
-Write the plan as one file, `docs/groove/PLAN.md`, in the user's language, with a `.gitignore` containing `*` beside it. If a plan exists, change it. Replacing it whole cannot be undone, so ask first.
+One file holds the plan: `docs/groove/PLAN.md`, written in the user's language, next to a `.gitignore` whose only line is `*`. A plan that already exists is changed, not replaced. Replacing it cannot be undone, so ask before doing that.
 
 ## Skeleton
 
-Keep the IDs and markers exactly as shown; `check-plan.sh` reads them. Delete a section that does not apply, and say each thing in one place.
+`check-plan.sh` reads the IDs and markers below, so keep them as they are. Drop a section with nothing to say, and say each thing in one section only.
 
 ```markdown
 # <project>
@@ -35,13 +35,13 @@ Keep the IDs and markers exactly as shown; `check-plan.sh` reads them. Delete a 
   - Done when: <a command, or something a person can confirm without judgment>
 ```
 
-## Rules
+## Sections
 
-- **Core**: check every later section and task against this sentence.
-- **Requirements**: only what was requested, or what the core flow cannot finish without. Any other feature you thought of goes to Not doing.
-- **Design**: each module names the requirements that use it; drop one that can name none. Read values that must match something existing, such as IDs, column names, and formats, from their definition. If there is no definition, ask.
-- **Decisions**: each decision, and each assumption you did not ask about, once, with its reason.
-- **Tasks**: each fits one session. `Done when` is the cheapest check that would fail if the task were wrong. Mark a task only a person can do with 👤, and never invent its result.
-- The first task writes into the agent instruction file where the plan is, and that a session continuing the build uses groove to do the first unchecked task.
+- **Core** is the sentence every later section and task is checked against.
+- **Requirements** hold what was requested and what the core flow cannot finish without. Every other feature you thought of belongs in Not doing.
+- **Design** lists modules, each naming the requirements that use it. A module that can name none is dropped. A value that must match something existing, such as an ID, a column name, or a format, is read from its definition; with no definition, ask.
+- **Decisions** records each decision, and each assumption you did not ask about, once, with its reason.
+- **Tasks** each fit one session. `Done when` is the cheapest check that would fail if the task were wrong. A task only a person can do carries 👤, and you never invent its result.
+- The first task writes two things into the agent instruction file: where the plan is, and that a session continuing the build uses groove to do the first unchecked task.
 
-Before stopping, run `bash <this skill's folder>/check-plan.sh docs/groove/PLAN.md` from the project root and fix what it reports.
+Before you stop, run `bash <this skill's folder>/check-plan.sh docs/groove/PLAN.md` from the project root and fix what it reports.

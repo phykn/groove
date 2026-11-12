@@ -1,6 +1,6 @@
 <h1 align="center">groove</h1>
 
-<p align="center">A coding skill for Claude Code and Codex that writes only what the task needs.</p>
+<p align="center">One skill for all coding work in Claude Code and Codex: it writes the least that finishes the job and proves it.</p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fphykn%2Fgroove%2Fmain%2F.claude-plugin%2Fplugin.json&query=%24.version&label=version&prefix=v" alt="version">
@@ -8,11 +8,11 @@
   <img src="https://img.shields.io/badge/Codex-plugin-black" alt="Codex plugin">
 </p>
 
-- Plans in one file, and only when the work is too big to do and check in one go
-- Names a caller before writing any new function, option, or file
-- Cuts unused and one-use code before finishing, asked or not
-- Keeps the test suite to a few seconds
-- Reports with counted numbers: lines, new functions and files, tests and their time
+- Does the task you name: a rebuild is rewritten from scratch, not trimmed into a refactor
+- Writes a function, option, or file only after naming what calls it
+- Cuts unused and one-use code before finishing, without being asked
+- Asks only what no file can answer, and stops only once, after a plan
+- Reports counted numbers: lines, new functions, new files, tests and their time
 
 ## Install
 
@@ -32,12 +32,12 @@ codex plugin add groove@groove
 
 ## Use
 
-Ask for the work. The skill starts on its own for requests such as these, in English or Korean:
+Ask for the work in English or Korean. The skill starts on its own:
 
 ```text
 Fix this: the total comes out as 9:00
 Plan a CLI that summarizes the CSV files in a folder
-Refactor this folder
+Rebuild this project
 ```
 
-It stops once, after writing a plan. Say "build it" and it runs to the end.
+Big work and rebuilds get a one-file plan first. Say "build it" and it runs to the end.

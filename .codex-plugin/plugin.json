@@ -1,25 +1,35 @@
 {
   "name": "groove",
-  "version": "0.2.0",
-  "description": "Coding work end to end with only what the task needs: plan when it is big, write, cut, and prove it with the cheapest check.",
+  "version": "0.3.0",
+  "description": "One skill for all coding work: it does the task you name, writes the least that finishes it, cuts the rest, and proves it with the cheapest check.",
   "author": {
     "name": "phykn",
     "url": "https://github.com/phykn"
   },
   "homepage": "https://github.com/phykn/groove",
   "repository": "https://github.com/phykn/groove",
-  "keywords": ["skills", "vibe-coding", "planning", "refactoring", "testing"],
+  "keywords": [
+    "skills",
+    "vibe-coding",
+    "planning",
+    "refactoring",
+    "testing"
+  ],
   "skills": "./skills/",
   "interface": {
     "displayName": "Groove",
-    "shortDescription": "Coding work with only what the task needs",
-    "longDescription": "Groove handles coding work end to end. It writes a one-file plan only when the work is too big to do and check in one go, names a caller before writing anything new, cuts what is not needed before finishing, keeps tests to a few seconds, and reports with counted numbers.",
+    "shortDescription": "All coding work with the least that finishes it",
+    "longDescription": "Groove takes coding work from request to report. It does the task you name, plans in one file only for big work and rebuilds, names a caller before writing anything new, cuts what is not needed before finishing, keeps tests to a few seconds, and reports counted numbers.",
     "developerName": "phykn",
     "category": "Productivity",
-    "capabilities": ["Interactive", "Read", "Write"],
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
     "defaultPrompt": [
       "Use Groove to fix this bug.",
-      "Use Groove to plan and build this project."
+      "Use Groove to rebuild this project."
     ],
     "websiteURL": "https://github.com/phykn/groove",
     "screenshots": []

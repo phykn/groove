@@ -4,39 +4,48 @@ plan=${1:-docs/groove/PLAN.md}
 [ -f "$plan" ] || { echo "no plan at $plan"; exit 2; }
 
 awk '
-function fail(message) { print message; bad = 1 }
-function end_task() { if (task != "" && !done) fail(task ": no Done when") }
+function report(problem) { print problem; failed = 1 }
+function close_task() { if (task != "" && !has_done) report(task ": no Done when") }
 
-/^```/ { code = !code; next }
-code { next }
-
-{ prose = $0; gsub(/`[^`]*`/, "", prose) }
-prose ~ /<[^<>]+>/ { fail("line " NR ": unfilled placeholder") }
-
-/^- R[0-9]+:/ {
-    id = substr($2, 1, length($2) - 1)
-    if (id in defined) fail(id ": defined twice")
-    defined[id] = 1
-}
-
-/^- \[[ x]\] / { end_task(); task = $2 == "[x]" ? $3 : $4; done = 0 }
-/Done when:/ { done = 1 }
+/^```/ { fenced = !fenced; next }
+fenced { next }
 
 {
-    line = $0
-    while (match(line, /R[0-9]+/)) {
-        id = substr(line, RSTART, RLENGTH)
-        used[id] = 1
+    text = $0
+    gsub(/`[^`]*`/, "", text)
+    if (text ~ /<[^<>]+>/) report("line " NR ": unfilled placeholder")
+}
+
+/^- R[0-9]+:/ {
+    id = $2
+    sub(/:$/, "", id)
+    if (id in required) report(id ": defined twice")
+    required[id] = 1
+}
+
+/^- \[[ x]\] T[0-9]+\./ {
+    close_task()
+    match($0, /T[0-9]+/)
+    task = substr($0, RSTART, RLENGTH)
+    has_done = 0
+}
+/Done when:/ { has_done = 1 }
+
+{
+    rest = $0
+    while (match(rest, /R[0-9]+/)) {
+        id = substr(rest, RSTART, RLENGTH)
+        named[id] = 1
         if (task != "") covered[id] = 1
-        line = substr(line, RSTART + RLENGTH)
+        rest = substr(rest, RSTART + RLENGTH)
     }
 }
 
 END {
-    if (task == "") fail("no tasks")
-    end_task()
-    for (id in defined) if (!(id in covered)) fail(id ": no task covers it")
-    for (id in used) if (!(id in defined)) fail(id ": not a requirement")
-    exit bad
+    if (task == "") report("no tasks")
+    close_task()
+    for (id in required) if (!(id in covered)) report(id ": no task covers it")
+    for (id in named) if (!(id in required)) report(id ": not a requirement")
+    exit failed
 }
 ' "$plan" && echo "plan ok"

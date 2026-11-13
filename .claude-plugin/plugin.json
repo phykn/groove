@@ -7,5 +7,6 @@
     "url": "https://github.com/phykn"
   },
   "homepage": "https://github.com/phykn/groove",
-  "repository": "https://github.com/phykn/groove"
+  "repository": "https://github.com/phykn/groove",
+  "license": "MIT"
 }

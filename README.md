@@ -38,7 +38,7 @@ Ask in English or Korean, and the skill starts by itself:
 The total prints 9:00 but should be about 33 hours. Fix it
 Review entries.py
 Plan a CLI that summarizes the CSV files in a folder, then build it
-전체 프로젝트 리빌딩 해줘
+Rebuild this project
 ```
 
 A rebuild, or work too large for one session, gets a one-file plan first. Say "build it" and every task runs to the end.

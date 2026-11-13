@@ -3,12 +3,12 @@
   "owner": {
     "name": "phykn"
   },
-  "description": "Marketplace for groove, a coding skill that writes the least that finishes the job.",
+  "description": "Marketplace for groove, a coding skill that writes only what the job needs.",
   "plugins": [
     {
       "name": "groove",
       "source": "./",
-      "description": "One skill for all coding work: it does the task you name, writes the least that finishes it, cuts the rest, and proves it with the cheapest check.",
+      "description": "A single skill for every coding task: it takes the task you name, writes only what something uses, cuts the rest before finishing, and reports the check that passed.",
       "category": "productivity"
     }
   ]

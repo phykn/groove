@@ -1,7 +1,7 @@
 {
   "name": "groove",
-  "version": "0.3.1",
-  "description": "One skill for all coding work: it does the task you name, writes the least that finishes it, cuts the rest, and proves it with the cheapest check.",
+  "version": "0.4.0",
+  "description": "A single skill for every coding task: it takes the task you name, writes only what something uses, cuts the rest before finishing, and reports the check that passed.",
   "author": {
     "name": "phykn",
     "url": "https://github.com/phykn"

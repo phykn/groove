@@ -1,7 +1,7 @@
 {
   "name": "groove",
-  "version": "0.3.1",
-  "description": "One skill for all coding work: it does the task you name, writes the least that finishes it, cuts the rest, and proves it with the cheapest check.",
+  "version": "0.4.0",
+  "description": "A single skill for every coding task: it takes the task you name, writes only what something uses, cuts the rest before finishing, and reports the check that passed.",
   "author": {
     "name": "phykn",
     "url": "https://github.com/phykn"
@@ -18,8 +18,8 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Groove",
-    "shortDescription": "All coding work with the least that finishes it",
-    "longDescription": "Groove takes coding work from request to report. It does the task you name, plans in one file only for big work and rebuilds, names a caller before writing anything new, cuts what is not needed before finishing, keeps tests to a few seconds, and reports counted numbers.",
+    "shortDescription": "Every coding task, with only the code it needs",
+    "longDescription": "Groove carries a coding task from request to report. It takes the task you name, plans rebuilds and large work in one file first, names a caller before writing anything new, cuts what nothing needs before finishing, keeps tests to a few seconds, and reports numbers it counted.",
     "developerName": "phykn",
     "category": "Productivity",
     "capabilities": [
